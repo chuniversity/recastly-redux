@@ -4,9 +4,5 @@ var changeVideo = (video) => ({
   video: video
 });
 
-// const addNewMessageActionCreator = ({ userName, text }) => ({
-//   type: "ADD_MESSAGE",
-//   payload: { userName, text }
-// });
 
 export default changeVideo;

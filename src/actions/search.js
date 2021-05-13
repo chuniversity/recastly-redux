@@ -10,22 +10,22 @@ var handleVideoSearch = (q) => {
   // two dispatches. one for video. one for videolis
 
 
-  return function thunk(dispatch) {
+  return (dispatch) => {
+    var options = {
+      key: YOUTUBE_API_KEY,
+      query: q // check this
+    };
+    searchYouTube(options, (videos) => {
+      dispatch(changeVideo(videos[0]));
+      dispatch(changeVideoList(videos));
+     });
+  };
 
-    // return (dispatch) => {
-    //   return searchYouTube(YOUTUBE_API_KEY, q, max = 5)
-    // };
-
-    return $.get('https://www.googleapis.com/youtube/v3/search', (data) => {
-      dispatch({ type: 'VIDEO_SEARCH', payload: data });
-
-    //
-    // dispatch(changeVideo(data[0]));
-    // dispatch(changeVideoList(data));
-
-
-  });
-};
+  // return function thunk(dispatch) {
+  //   return $.get('https://www.googleapis.com/youtube/v3/search', (data) => {
+  //     dispatch({ type: 'VIDEO_SEARCH', payload: data });
+  //   });
+  // };
 
 };
 
